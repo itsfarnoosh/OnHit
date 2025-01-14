@@ -1,0 +1,113 @@
+### Explanation of the Problem Solved
+
+Designing the Nutritional Insights Tracker was a journey of solving real-world challenges, particularly when it came to parsing complex user input and ensuring the program could gracefully handle various scenarios. This explanation outlines the step-by-step process I followed to solve a critical problem—user input inconsistencies—and details how I addressed the barriers I faced while designing a program that prioritizes user experience, robustness, and adaptability. Throughout this process, I emphasized WHY each decision was made, ensuring the program aligns with the needs of users and collaborators.
+
+---
+
+#### **The Problem: Parsing Complex User Input**
+
+One of the most significant challenges was dealing with the variety of ways users might input ingredients and their quantities. The program expected input in the format: `ingredient quantity` (e.g., `chicken 100g, rice 200g`). However, users often make mistakes or enter data inconsistently, leading to several issues:
+
+1. Missing units (e.g., `chicken 100`).
+2. Extra or inconsistent spaces (e.g., `chicken    100g`).
+3. Unknown ingredients not present in the database (e.g., `pasta 150g`).
+
+These issues could result in incorrect calculations, program crashes, or user frustration. Solving this problem was crucial to ensure the program was user-friendly and resilient.
+
+---
+
+#### **Step-by-Step Process**
+
+1. **Understanding the Requirements**
+
+   The first step was to identify the program's needs:
+   - Extract ingredient names and quantities accurately.
+   - Validate that the input follows the required format.
+   - Handle unknown ingredients gracefully, ensuring the program remains robust and adaptable.
+
+   **WHY?**
+   By clearly defining these requirements upfront, I could ensure the solution was focused and effective. This approach prevented overcomplication and misdirection, allowing me to address the core problem efficiently.
+
+2. **Breaking Down the Problem**
+
+   To tackle the challenge, I divided it into smaller, manageable parts:
+   - **Input Splitting:** Separate the input string into individual ingredient-quantity pairs.
+   - **Extracting Values:** Identify the ingredient name and quantity for each pair.
+   - **Validating Input:** Check that the quantity is a valid number and that the ingredient exists in the database.
+   - **Handling Errors:** Provide meaningful feedback for invalid formats or unknown ingredients, guiding users to correct their input.
+
+   **WHY?**
+   Breaking the problem into distinct steps made it easier to design and test the solution incrementally. This modular approach also ensured the program could be extended in the future to handle additional input formats or requirements.
+
+3. **Designing the Solution**
+
+   The solution was implemented in the `get_ingredients` function:
+
+   - **Input Splitting:** I used Python’s `split(",")` method to process multiple ingredient entries in a single input.
+   - **Error Handling:** Wrapped the logic in a `try-except` block to catch errors such as missing quantities or invalid formats.
+   - **Unit Validation:** Stripped the "g" unit from the quantity and converted it to a float to ensure consistent calculations.
+   - **Feedback Mechanism:** Added warnings for unknown ingredients or invalid formats, allowing users to correct their input without interrupting the program’s flow.
+
+   **WHY?**
+   These design choices focused on improving the user experience by making the program more intuitive and resilient. For example:
+   - Splitting input saves users time by allowing multiple entries in one go.
+   - Error handling ensures the program doesn’t crash, maintaining a seamless experience.
+   - Feedback empowers users to understand and fix their mistakes, building trust in the tool.
+
+4. **Handling Unknown Ingredients**
+
+   A key feature was handling ingredients not found in the database. When an unknown ingredient is detected, the program:
+   - Prompts the user to either add the missing ingredient’s nutritional data or skip it.
+   - Allows users to re-enter valid ingredients if they make a mistake.
+
+   **WHY?**
+   This approach ensures the program remains dynamic and adaptable. By letting users add new ingredients, the program evolves with their needs, avoiding the limitations of a static hardcoded database. Additionally, skipping unknown ingredients prevents unnecessary interruptions, maintaining a smooth and frustration-free experience.
+
+5. **Testing and Iterating**
+
+   After implementing the solution, I tested it with various edge cases:
+   - Correct input (e.g., `chicken 100g, rice 200g`).
+   - Missing units (e.g., `chicken 100`).
+   - Extra spaces (e.g., `chicken    100g`).
+   - Unknown ingredients (e.g., `pasta 150g`).
+
+   Each test revealed areas for improvement, such as handling additional spaces or ensuring meaningful error messages. I iterated on the solution until it could handle all tested scenarios gracefully.
+
+   **WHY?**
+   Thorough testing is essential to ensure the program is robust and ready for real-world usage. Iterating on feedback allows continuous improvement, resulting in a reliable and user-friendly application.
+
+---
+
+#### **Overcoming Barriers**
+
+1. **Invalid Formats**
+
+   **Barrier:** Users entering incorrect formats (e.g., forgetting units or adding extra spaces).
+   **Solution:** I used string manipulation techniques and `try-except` blocks to validate and clean input. This ensured errors were caught early, and users were prompted to correct them.
+
+2. **Unknown Ingredients**
+
+   **Barrier:** Ingredients not present in the database could cause crashes or incomplete calculations.
+   **Solution:** The program prompts users to either add missing ingredients with their nutritional data or skip them. This makes the program adaptable and user-centric.
+
+---
+
+#### **Outcome**
+
+The solution successfully addressed the problem of parsing complex user input. The program can now:
+- Handle various input scenarios without crashing or confusing the user.
+- Adapt to user needs by allowing dynamic additions to the database.
+- Provide meaningful feedback, guiding users to correct mistakes and continue seamlessly.
+
+Additionally, the modular design and robust error handling make the program easier to maintain and extend. Future collaborators can build on this foundation with confidence.
+
+---
+
+#### **Conclusion**
+
+This problem-solving process demonstrates my ability to:
+1. Break down complex challenges into manageable steps.
+2. Design thoughtful solutions with a clear emphasis on WHY.
+3. Iterate on feedback and continuously improve the program.
+
+By focusing on communication, collaboration, and user experience, I aim to make working with me productive and enjoyable for everyone involved.
