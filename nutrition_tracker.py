@@ -79,6 +79,53 @@ def get_ingredients():
     return ingredient_list
 
 
+def calculate_nutrition(ingredient_list):
+    """
+    Calculate the total nutritional value of the meal.
+    
+    Args:
+        ingredient_list (list): List of tuples (ingredient_name, quantity_in_grams)
+    
+    Returns:
+        dict: Total nutrition (calories, protein, carbs, fats)
+    
+    Time Complexity: O(n)
+        Where n is the number of ingredients in the list.
+    """
+    total_nutrition = {"calories": 0, "protein": 0, "carbs": 0, "fats": 0}
+    for name, qty in ingredient_list:
+        qty_factor = qty / 100
+        if name in nutritional_data:
+            total_nutrition["calories"] += nutritional_data[name]["calories"] * qty_factor
+            total_nutrition["protein"] += nutritional_data[name]["protein"] * qty_factor
+            total_nutrition["carbs"] += nutritional_data[name]["carbs"] * qty_factor
+            total_nutrition["fats"] += nutritional_data[name]["fats"] * qty_factor
+    return total_nutrition
+
+
+def save_meal(date, meal, nutrition):
+    """
+    Save the meal and its nutritional data to a text file.
+    
+    Args:
+        date (str): Date of the meal (YYYY-MM-DD)
+        meal (str): Name of the meal
+        nutrition (dict): Nutritional data
+
+    """
+    
+
+
+def weekly_summary():
+    """
+    Display the weekly nutritional summary.
+    Reads data from the log file and calculates totals.
+
+    """
+    
+
+
+
 def main():
     """
     Main menu for the Nutritional Insights Tracker.
