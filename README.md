@@ -38,7 +38,7 @@ The **Nutritional Insights Tracker** is a Python-based program that allows users
 3. Open a terminal or command prompt and navigate to the folder containing the script.
 4. Run the script using:
    ```bash
-   python nutrition_tracker.py
+   python3 nutrition_tracker.py
    ```
 
 ---
