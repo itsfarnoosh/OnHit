@@ -108,22 +108,47 @@ def save_meal(date, meal, nutrition):
     Save the meal and its nutritional data to a text file.
     
     Args:
-        date (str): Date of the meal (YYYY-MM-DD)
+        date (str): Date of the maddeal (YYYY-MM-DD)
         meal (str): Name of the meal
         nutrition (dict): Nutritional data
-
-    """
     
+    Time Complexity: O(1) for appending to the file.
+    """
+    with open(log_file, "a") as file:
+        file.write(f"{date}|{meal}|{nutrition['calories']:.2f},{nutrition['protein']:.2f},"
+                   f"{nutrition['carbs']:.2f},{nutrition['fats']:.2f}\n")
+    print("Meal saved successfully!")
 
 
 def weekly_summary():
     """
     Display the weekly nutritional summary.
     Reads data from the log file and calculates totals.
-
-    """
     
+    Time Complexity: O(n)
+        Where n is the number of lines in the log file.
+    """
+    try:
+        with open(log_file, "r") as file:
+            lines = file.readlines()
+    except FileNotFoundError:
+        print("No data found! Add meals first.")
+        return
 
+    weekly_totals = {"calories": 0, "protein": 0, "carbs": 0, "fats": 0}
+    for line in lines:
+        _, _, nutrition = line.strip().split("|")
+        calories, protein, carbs, fats = map(float, nutrition.split(","))
+        weekly_totals["calories"] += calories
+        weekly_totals["protein"] += protein
+        weekly_totals["carbs"] += carbs
+        weekly_totals["fats"] += fats
+
+    print("\nWeekly Summary:")
+    print(f"Calories: {weekly_totals['calories']:.2f} kcal")
+    print(f"Protein: {weekly_totals['protein']:.2f} g")
+    print(f"Carbs: {weekly_totals['carbs']:.2f} g")
+    print(f"Fats: {weekly_totals['fats']:.2f} g\n")
 
 
 def main():
