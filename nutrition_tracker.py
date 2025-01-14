@@ -29,3 +29,4 @@ def get_ingredients():
             print(f"Invalid input format for '{item.strip()}'. Use format 'ingredient 100g'.")
             return None  # Return None to indicate failure
     return ingredient_list
+
